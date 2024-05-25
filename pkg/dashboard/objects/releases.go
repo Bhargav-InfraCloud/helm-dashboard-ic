@@ -306,7 +306,8 @@ func (r *Release) GetRev(revNo int) (*Release, error) {
 	return nil, errorx.InternalError.New("No revision found for number %d", revNo)
 }
 
-func (r *Release) Upgrade(repoChart string, version string, justTemplate bool, values map[string]interface{}) (*release.Release, error) {
+func (r *Release) Upgrade(repoChart string, version string, justTemplate bool, values map[string]interface{},
+	force bool) (*release.Release, error) {
 	r.mx.Lock()
 	defer r.mx.Unlock()
 
@@ -340,6 +341,7 @@ func (r *Release) Upgrade(repoChart string, version string, justTemplate bool, v
 		cmd.DryRunOption = "server"
 	}
 	cmd.ResetValues = true
+	cmd.Force = true
 
 	chrt, err := locateChart(cmd.ChartPathOptions, repoChart, r.Settings)
 	if err != nil {

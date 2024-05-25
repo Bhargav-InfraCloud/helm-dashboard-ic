@@ -131,6 +131,9 @@
                     },
                     "preview": {
                       "type": "boolean"
+                    },
+                    "force": {
+                      "type": "boolean"
                     }
                   }
                 }

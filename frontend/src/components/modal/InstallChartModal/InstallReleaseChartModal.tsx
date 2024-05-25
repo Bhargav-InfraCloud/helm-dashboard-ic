@@ -20,6 +20,7 @@ import { InstallChartModalProps } from "../../../data/types";
 import { DefinedValues } from "./DefinedValues";
 import apiService from "../../../API/apiService";
 import { InstallUpgradeTitle } from "./InstallUpgradeTitle";
+import InstallationArguments from './InstallationArguments';
 
 export const InstallReleaseChartModal = ({
   isOpen,
@@ -215,6 +216,8 @@ export const InstallReleaseChartModal = ({
           showCurrentVersion
         />
       )}
+
+      <InstallationArguments />
 
       <GeneralDetails
         releaseName={releaseName}
